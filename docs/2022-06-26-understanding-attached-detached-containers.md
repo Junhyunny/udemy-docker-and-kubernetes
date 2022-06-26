@@ -1,6 +1,6 @@
 ## Understanding attached and detached containers
 
-### 1. docker start 명령어 실행
+### 1. docker start 명령어
 
 * `docker start` 명령어로 컨테이너를 재실행하면 컨테이너는 백그라운드에서 동작한다. 
 * 별도로 동작 중인 로그로 연결되지 않고, 어떤 컨테이너를 실행했는지 로그만 출력된 후 다시 터미널로 돌아온다.
@@ -38,7 +38,7 @@ $ docker run -p 8083:80 55549a2fee4d
 172.17.0.1 - - [26/Jun/2022:13:27:17 +0000] "GET /logo192.png HTTP/1.1" 200 5347 "http://localhost:8083/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" "-"
 ```
 
-### 3. detached 모드 실행
+### 3. docker run -d 옵션
 
 * `-d` 옵션을 통해 detaced 모드로 컨테이너를 실행할 수 있다.
 
@@ -63,7 +63,7 @@ $ docker attach d6f414b858ca
 172.17.0.1 - - [26/Jun/2022:16:05:57 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" "-"
 ```
 
-### 5. start 명령어
+### 5. docker start 명령어
 
 * `start` 명령어를 사용하면 정지 중인 컨테이너를 재실행할 수 있다.
 * 기본적으로 detaced 모드로 컨테이너를 실행한다.
@@ -86,9 +86,9 @@ $ docker start -a pedantic_stonebraker
 172.17.0.1 - - [26/Jun/2022:16:14:09 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" "-"
 ```
 
-### 6. log 명령어
+### 6. docker logs 명령어
 
-* `log` 명령어를 사용하면 컨테이너의 로그를 확인할 수 있다.
+* `logs` 명령어를 사용하면 컨테이너의 로그를 확인할 수 있다.
 * 기본적으로 어플리케이션의 로그를 1회 확인한다.
 * `-f` 옵션을 사용하면 로그를 1회 확인하고 종료하는 것이 아니라 실시간으로 로그를 확인한다.
 
