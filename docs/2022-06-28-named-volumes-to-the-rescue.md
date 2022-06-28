@@ -15,8 +15,9 @@
 
 ### 2. Anonymouse Volumes
 
-* 컨테이너가 존재하는 동안만 존재한다.
-* 컨테이너를 종료하고 삭제하면 함께 사라진다.
+* 컨테이너를 실행할 때 `--rm` 옵션을 주는 경우 컨테이너가 존재하는 동안만 존재한다.
+* 컨테이너를 종료하면 컨테이너가 삭제되면서 익명 볼륨도 함께 삭제된다.
+* `--rm` 옵션이 없는 경우 컨테이너를 삭제하더라도 자동으로 삭제되지 않는다.
 
 ```
 $ docker run -p 3000:80 -d --name feedback-app --rm feedback-node:volumes
@@ -45,4 +46,12 @@ $ docker run -p 3000:80 -d --name feedback-app --rm -v feedback:/app/feedback fe
 $ docker volume ls
 DRIVER    VOLUME NAME
 local     feedback
+```
+
+### 4. 사용하지 않는 볼륨 삭제
+
+```
+$ docker volume rm VOLUME_NAME
+
+$ docker volume prune
 ```
