@@ -264,3 +264,4 @@ $ docker container inspect mongodb
 
 * 상세 정보에서 찾은 IP 주소로 접속한다.
     * 강의에서는 됬지만, 내 로컬 호스트에서는 실패
+    * --network 옵션으로 mongodb / myapp 모두 같은 네트워크로 묶어준다.
