@@ -5,7 +5,7 @@
 * using when build-time
 * Dockerfile 내부에서 사용 가능
 * CMD 혹은 어플리케이션 코드에서 사용 불가능
-* 도커 이미지를 만들 떄 `--build-arg` 옵션을 통해 지정할 수 있다.
+* 도커 이미지를 만들 때 `--build-arg` 옵션을 통해 지정할 수 있다.
 
 ### 2. ENVironment variable
 
