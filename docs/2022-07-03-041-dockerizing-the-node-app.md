@@ -21,7 +21,12 @@ CMD ["node", "app.js"]
 ### 2. Run Docker container
 
 ```
-$ docker build -t goals-backend .
+$ docker build -t goals-node .
 
-$ docker run --name goals-backend --rm -d -p 80:80 goals-backend
+$ docker run\
+    --name goals-backend\
+    --rm\
+    -d\
+    -p 80:80\
+    goals-node
 ```

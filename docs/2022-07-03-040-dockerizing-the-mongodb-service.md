@@ -7,6 +7,6 @@ $ docker run\
     --name mongodb\
     --rm\
     -d\
-    --network goals-net\
+    -p 27017:27017\
     mongo
 ```
