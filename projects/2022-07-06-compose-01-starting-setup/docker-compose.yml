@@ -1,0 +1,58 @@
+# docker compose version, not application
+version: '3.8'
+# use containers
+services:
+  # container names
+  mongodb: 
+    # default detach mode and auto remove
+    image: 'mongo' 
+    volumes: 
+      - data:/data/db
+    # also possible
+    # environment:
+      # MONGO_INITDB_ROOT_USERNAME: max
+      # MONGO_INITDB_ROOT_PASSWORD: secret
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    # dash is necessary when not key-value 
+    env_file:
+      - ./env/mongo.env 
+    # networks configuration is not necessary cause all containers in compose configurations have same network
+    # networks:
+    #   - goals-net
+  backend: 
+    # image: 'goals-node' # custom image
+    build: ./backend
+    # it is useful when dockerfile's name is different
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      # docker compose allows relative path
+      - ./backend:/app
+      - /app/node_modules
+    # environment:
+    #   - MONGODB_USERNAME=max
+    #   - MONGODB_PASSWORD=secret
+    env_file:
+      - ./env/backend.env
+    # docker compose launches multiple container
+    # so, some containers depends on other services 
+    # let docker compose know this
+    depends_on:
+      - mongodb
+  frontend: 
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true # two options can help applicaiton interaction mode
+    tty: true # two options can help applicaiton interaction mode
+# named volume is been configured at here. same level with services
+volumes:
+  data:
+  logs:
