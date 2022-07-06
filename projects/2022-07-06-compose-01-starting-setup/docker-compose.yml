@@ -6,6 +6,7 @@ services:
   mongodb: 
     # default detach mode and auto remove
     image: 'mongo' 
+    container_name: 'mongo'
     volumes: 
       - data:/data/db
     # also possible
@@ -23,6 +24,7 @@ services:
   backend: 
     # image: 'goals-node' # custom image
     build: ./backend
+    container_name: 'goals-backend'
     # it is useful when dockerfile's name is different
     # build:
     #   context: ./backend
@@ -46,6 +48,7 @@ services:
       - mongodb
   frontend: 
     build: ./frontend
+    container_name: 'goals-frontend'
     ports:
       - '3000:3000'
     volumes:
