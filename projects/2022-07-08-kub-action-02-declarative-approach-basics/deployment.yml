@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: second-app-deployment # kubernetes에서 사용할 Deployment 이름
+spec: 
+  replicas: 4 # default 1
+  selector: 
+    matchLabels:
+      # label을 이용해 필요한 pod만 골라서 관리한다. key=value
+      app: second-app
+      tier: backend
+  template: # pod information, should be deployed
+    metadata: 
+      # important meta data
+      labels: 
+        app: second-app
+        tier: backend
+    spec: 
+      # multiple containers in the same pod
+      containers: 
+        - name: second-node
+          image: opop3966/kub-first-app:0.1
+        # - name: ...
+        #   image: ...
+# kubectl apply -f deployment.yml
+# kubectl delete -f deployment.yml
