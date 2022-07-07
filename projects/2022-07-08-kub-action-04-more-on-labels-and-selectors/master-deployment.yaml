@@ -39,5 +39,14 @@ spec:
       containers:
         - name: second-node
           image: opop3966/kub-first-app:0.1
+          # 태그의 변경이 없더라도 항상 이미지를 pull 받는다.
+          imagePullPolicy: Always
+          # kubernetes check container still alive
+          livenessProbe: 
+            httpGet: 
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
         # - name: ...
         #   image: ...
