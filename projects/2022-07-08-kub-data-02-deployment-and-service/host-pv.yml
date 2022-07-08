@@ -6,6 +6,8 @@ spec:
   capacity: 
     storage: 1Gi
   volumeMode: Filesystem # Block, or FileSystem
+  # storage class
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce # SingleNode
     # - ReadOnlyMany, Multiple Node

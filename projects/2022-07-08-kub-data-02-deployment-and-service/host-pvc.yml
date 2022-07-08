@@ -7,6 +7,8 @@ spec:
   volumeName: host-pv
   accessModes:
     - ReadWriteOnce
+  # storage class
+  storageClassName: standard
   resources:
     requests:
       # counter part capacity of pv's spec
