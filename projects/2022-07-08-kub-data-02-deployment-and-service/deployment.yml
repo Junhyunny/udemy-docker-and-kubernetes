@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-deployment
+spec: 
+  replicas: 5
+  selector: 
+    matchLabels:
+      app: story
+  template:
+    metadata: 
+      name: kub-data-demo
+      labels:
+        app: story
+    spec: 
+      containers: 
+        - name: story
+          image: opop3966/kub-data-demo:latest
+          
