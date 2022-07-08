@@ -15,11 +15,16 @@ spec:
       containers:
         - name: story
           image: academind/kub-data-demo:2
+          # 컨테이너 어플리케이션에서 사용할 변수 지정
           env:
+            # 환경 변수 이름
             - name: STORY_FOLDER
+              # 단순하게 value를 지정해도 된다.
               # value: 'story'
               valueFrom: 
+                # ConfigMap 리소스를 사용한 환경 변수 설정
                 configMapKeyRef:
+                  # 이름
                   name: data-store-env
                   key: folder
           volumeMounts:
