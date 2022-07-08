@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: story-deployment
 spec: 
-  replicas: 5
+  replicas: 1
   selector: 
     matchLabels:
       app: story
@@ -15,5 +15,13 @@ spec:
     spec: 
       containers: 
         - name: story
-          image: opop3966/kub-data-demo:latest
-          
+          image: opop3966/kub-data-demo:0.1
+          # container 내부 디렉토리를 설정
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+      # volume name and volume type
+      # volumeDriver emptyDir lifecycle은 pod를 따라간다.
+      volumes:
+        - name: story-volume
+          emptyDir: {}
