@@ -15,3 +15,9 @@ spec:
       containers: 
         - name: users
           image: opop3966/kub-demo-user:latest
+          env:
+            - name: AUTH_ADDRESS
+              # 같은 pod 안에 위치한 컨테이너들은 localhost 를 이용해 통신이 가능하다.
+              value: localhost
+        - name: auth
+          image: opop3966/kub-demo-auth:latest
