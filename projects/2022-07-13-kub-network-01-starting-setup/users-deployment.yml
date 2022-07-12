@@ -18,6 +18,10 @@ spec:
           env:
             - name: AUTH_ADDRESS
               # 같은 pod 안에 위치한 컨테이너들은 localhost 를 이용해 통신이 가능하다.
-              value: localhost
-        - name: auth
-          image: opop3966/kub-demo-auth:latest
+              # value: localhost
+              # kubectl get services 명령어로 해당 서비스의 IP를 사용한다.
+              value: "10.111.28.165"
+              # auth-service.yml 파일에 명시한 서비스 이름을 사용한다.
+              # value: auth-service
+        # - name: auth
+        #   image: opop3966/kub-demo-auth:latest

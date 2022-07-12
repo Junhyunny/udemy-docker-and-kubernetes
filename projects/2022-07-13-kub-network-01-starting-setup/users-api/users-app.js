@@ -55,7 +55,10 @@ app.post('/login', async (req, res) => {
   // normally, we'd find a user by email and grab his/ her ID and hashed password
   const hashedPassword = password + '_hash';
   const response = await axios.get(
-    `http://${process.env.AUTH_ADDRESS}/token/` + hashedPassword + '/' + password
+    // `http://${process.env.AUTH_ADDRESS}/token/` + hashedPassword + '/' + password
+    // AUTH_SERVICE_SERVICE_HOST = kubernetes에 의해 자동으로 생성되는 환경변수
+    // {serviceName}_SERVICE_HOST
+    `http://${process.env.AUTH_SERVICE_SERVICE_HOST}/token/` + hashedPassword + '/' + password
   );  
   // const response = {
   //   status: 200,
