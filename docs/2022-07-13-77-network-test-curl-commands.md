@@ -27,3 +27,31 @@ $ curl -X POST http://192.168.59.100:32667/signup\
    -H 'Content-Type: application/json'\
    -d '{"email":"test@test.com","password":"testers"}'
 ```
+
+##### make tasks-service
+
+```
+$ minikube service tasks-service
+|-----------|---------------|-------------|-----------------------------|
+| NAMESPACE |     NAME      | TARGET PORT |             URL             |
+|-----------|---------------|-------------|-----------------------------|
+| default   | tasks-service |        8000 | http://192.168.59.100:30415 |
+|-----------|---------------|-------------|-----------------------------|
+🎉  Opening service default/tasks-service in default browser...
+```
+
+##### Task 조회
+
+```
+$ curl http://192.168.59.100:30415/tasks\
+   -H "Authorization: Bearer abc"
+```
+
+##### Task 생성
+
+```
+$ curl -X POST http://192.168.59.100:30415/tasks\
+   -H "Content-Type: application/json"\
+   -H "Authorization: Bearer abc"\
+   -d '{"text":"world","title":"hello"}'
+```
