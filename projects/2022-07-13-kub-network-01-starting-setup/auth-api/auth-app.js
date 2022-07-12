@@ -6,8 +6,9 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/verify-token/:token', (req, res) => {
+  console.log(req.params)
   const token = req.params.token;
-
+  console.log(token)
   // dummy verification!
   if (token === 'abc') {
     return res.status(200).json({ message: 'Valid token.', uid: 'u1' });

@@ -15,9 +15,10 @@ const extractAndVerifyToken = async (headers) => {
   if (!headers.authorization) {
     throw new Error('No token provided.');
   }
+  console.log(headers.authorization)
   const token = headers.authorization.split(' ')[1]; // expects Bearer TOKEN
-
-  const response = await axios.get('http://auth/verify-token/' + token);
+  console.log(token)
+  const response = await axios.get(`http://${process.env.AUTH_ADDRESS}/verify-token/` + token);
   return response.data.uid;
 };
 
