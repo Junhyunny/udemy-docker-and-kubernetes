@@ -30,14 +30,14 @@ app.use((err, req, res, next) => {
   res.status(code).json({ message: message });
 });
 
-mongoose.connect(
-  process.env.MONGODB_CONNECTION_URI,
-  { useNewUrlParser: true },
-  (err) => {
-    if (err) {
-      console.log('COULD NOT CONNECT TO MONGODB!');
-    } else {
-      app.listen(3000);
-    }
-  }
-);
+// mongoose.connect(
+//   process.env.MONGODB_CONNECTION_URI,
+//   { useNewUrlParser: true },
+//   (err) => {
+//     if (err) {
+//       console.log('COULD NOT CONNECT TO MONGODB!');
+//     } else {
+//       app.listen(3000);
+//     }
+//   }
+// );
